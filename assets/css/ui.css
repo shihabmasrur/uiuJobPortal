@@ -1,0 +1,143 @@
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Loading Spinner */
+.spinner-border {
+    border-color: currentColor;
+    border-right-color: transparent;
+}
+
+/* Glass Effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Progress Bar */
+.progress-bar {
+    transition: width 0.3s ease-in-out;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Button Hover Effects */
+.btn-hover {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Input Focus Effects */
+.input-focus:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Page Transitions */
+.page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-full-width {
+        width: 100%;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} 

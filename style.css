@@ -1,0 +1,407 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Form Styles */
+.form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #444;
+}
+
+/* Job Categories */
+.categories {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.category {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.category.active {
+    background: #333;
+    color: #fff;
+}
+
+/* Job Listings */
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.job-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Profile Styles */
+.profile {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.skill-tag {
+    background: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+/* Reviews Section */
+.reviews {
+    margin-top: 20px;
+}
+
+.review {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+/* Messages Styles */
+.messages-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.conversations {
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+
+.conversation {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.conversation:hover, .conversation.active {
+    background: #f0f0f0;
+}
+
+.messages-list {
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.message {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.message.sent {
+    background: #e3f2fd;
+    margin-left: auto;
+}
+
+.message.received {
+    background: #f5f5f5;
+}
+
+.message .time {
+    font-size: 0.8em;
+    color: #666;
+    display: block;
+    margin-top: 5px;
+}
+
+.message-form {
+    display: flex;
+    gap: 10px;
+}
+
+.message-form textarea {
+    flex: 1;
+    resize: none;
+    height: 60px;
+}
+
+/* Notifications Styles */
+.notifications {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.notification {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.notification.unread {
+    background: #f0f8ff;
+}
+
+.notification .time {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Application Styles */
+.job-applications {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.application-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.application-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.status-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Error and Success Messages */
+.error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Student List Styles */
+.student-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.student-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.student-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.student-card p {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.student-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Employer Profile Styles */
+.employer-jobs {
+    margin-top: 20px;
+}
+
+.employer-jobs h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.job-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.job-card h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.job-card p {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.job-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Application List Styles */
+.application-list {
+    margin-top: 20px;
+}
+
+.application-card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.application-card h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.application-card p {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    .categories {
+        flex-direction: column;
+    }
+    
+    .category {
+        margin: 10px 0;
+    }
+    
+    .messages-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .conversations {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+} 
