@@ -69,4 +69,11 @@ A web application that connects students with job opportunities in various categ
 
 ## Contributing
 
+
+Updates : README.md
+apply_job.php
+config.php
+database.sql
+index.php : are upto date untill final project show rest are previous verison code.
+
 Feel free to submit issues and enhancement requests. 
