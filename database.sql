@@ -20,6 +20,10 @@ CREATE TABLE IF NOT EXISTS jobs (
     category ENUM('tuition', 'creative', 'tech') NOT NULL,
     description TEXT NOT NULL,
     employer_id INT NOT NULL,
+    salary_type ENUM('project', 'monthly') NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
+    work_location ENUM('onsite', 'remote') NOT NULL,
+    job_type ENUM('job', 'internship') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (employer_id) REFERENCES users(id) ON DELETE CASCADE
 );
