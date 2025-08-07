@@ -76,4 +76,7 @@ config.php
 database.sql
 index.php : are upto date untill final project show rest are previous verison code.
 
+Added: Added the update file for the new employer side dashboard.
+
 Feel free to submit issues and enhancement requests. 
+
