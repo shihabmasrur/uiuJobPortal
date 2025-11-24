@@ -18,7 +18,7 @@ $stmt->execute();
 $job_result = $stmt->get_result();
 $job = $job_result->fetch_assoc();
 
-$candidate_query = "SELECT username, email FROM users WHERE id = ?";
+$candidate_query = "SELECT username FROM users WHERE id = ?";
 $stmt = $conn->prepare($candidate_query);
 $stmt->bind_param("i", $candidate_id);
 $stmt->execute();
@@ -43,18 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("iiissss", $_SESSION['user_id'], $job_id, $candidate_id, $start_time, $end_time, $meeting_link, $notes);
     
     if ($stmt->execute()) {
-        // Send email notification to candidate
-        $to = $candidate['email'];
-        $subject = "Interview Scheduled - " . $job['title'];
-        $message = "Dear " . $candidate['username'] . ",\n\n";
-        $message .= "An interview has been scheduled for the position: " . $job['title'] . "\n";
-        $message .= "Date: " . date('F j, Y', strtotime($start_time)) . "\n";
-        $message .= "Time: " . date('h:i A', strtotime($start_time)) . " - " . date('h:i A', strtotime($end_time)) . "\n";
-        $message .= "Meeting Link: " . $meeting_link . "\n";
-        $message .= "Notes: " . $notes . "\n\n";
-        $message .= "Best regards,\nJob Portal Team";
-        
-        mail($to, $subject, $message);
+        // Create notification for candidate
+        $notification_message = "An interview has been scheduled for the position: " . $job['title'];
+        $sql = "INSERT INTO notifications (user_id, message, type, reference_id) VALUES (?, ?, 'interview', ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("isi", $candidate_id, $notification_message, $job_id);
+        $stmt->execute();
         
         header("Location: employer_dashboard.php?success=1");
         exit();
@@ -104,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-6">
                 <h2 class="text-lg font-medium mb-2">Candidate Details</h2>
                 <p class="text-gray-600">Name: <?php echo htmlspecialchars($candidate['username']); ?></p>
-                <p class="text-gray-600">Email: <?php echo htmlspecialchars($candidate['email']); ?></p>
             </div>
             
             <form method="POST" class="space-y-6">
