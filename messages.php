@@ -104,14 +104,20 @@ if ($selected_user) {
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('Images/messagebg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         .glass-effect {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
     </style>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-slate-100 via-purple-50 to-blue-100">
+</head> 
+ <!--changing to add image -->
+<body class="min-h-screen"> 
     <!-- Header -->
     <header class="glass-effect shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
