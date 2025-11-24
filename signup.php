@@ -55,111 +55,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Job Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-    </style>
+    <title>Sign Up - Freelance Job Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-100 via-purple-50 to-blue-100">
+<body>
     <!-- Header -->
-    <header class="glass-effect shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-semibold text-gray-800">Job Portal</div>
-            <ul class="flex space-x-8">
-               <!-- <li><a href="index.php" class="text-gray-600 hover:text-gray-900">Home</a></li> --> 
-                <li><a href="login.php" class="text-gray-600 hover:text-gray-900">Login</a></li>
+    <header>
+        <nav>
+            <div class="logo">Find Job As A Student</div>
+            <ul>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container mx-auto px-4 py-8 flex justify-center items-center min-h-[calc(100vh-76px)]">
-        <div class="w-full max-w-md">
-            <div class="bg-white rounded-3xl shadow-xl p-8">
-                <h2 class="text-3xl font-semibold mb-6">Sign Up</h2>
-                
-                <?php if ($error): ?>
-                    <div class="bg-red-50 text-red-600 p-4 rounded-xl mb-6"><?php echo $error; ?></div>
-                <?php endif; ?>
-                
-                <?php if ($success): ?>
-                    <div class="bg-green-50 text-green-600 p-4 rounded-xl mb-6"><?php echo $success; ?></div>
-                <?php endif; ?>
+    <div class="container">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            
+            <?php if ($error): ?>
+                <div class="error"><?php echo $error; ?></div>
+            <?php endif; ?>
+            
+            <?php if ($success): ?>
+                <div class="success"><?php echo $success; ?></div>
+            <?php endif; ?>
 
-                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="space-y-6">
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="name">Username</label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                        >
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user_type">I want to</label>
+                    <select id="user_type" name="user_type" onchange="toggleFields()" required>
+                        <option value="student">Sign up as a Student</option>
+                        <option value="employer">Sign up to Hire</option>
+                    </select>
+                </div>
+
+                <div id="student_fields" class="student-fields">
+                    <div class="form-group">
+                        <label for="student_id">Student ID</label>
+                        <input type="text" id="student_id" name="student_id">
                     </div>
 
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="password">Password</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                        >
+                    <div class="form-group">
+                        <label for="skills">Skills (comma separated)</label>
+                        <input type="text" id="skills" name="skills">
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="user_type">I want to</label>
-                        <select 
-                            id="user_type" 
-                            name="user_type" 
-                            onchange="toggleFields()" 
-                            required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none bg-white"
-                        >
-                            <option value="student">Sign up as a Student</option>
-                            <option value="employer">Sign up to Hire</option>
-                        </select>
-                    </div>
-
-                    <div id="student_fields" class="space-y-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2" for="student_id">Student ID</label>
-                            <input 
-                                type="text" 
-                                id="student_id" 
-                                name="student_id"
-                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                            >
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-700 mb-2" for="skills">Skills (comma separated)</label>
-                            <input 
-                                type="text" 
-                                id="skills" 
-                                name="skills"
-                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                            >
-                        </div>
-                    </div>
-
-                    <button 
-                        type="submit" 
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-xl transition-colors"
-                    >
-                        Sign Up
-                    </button>
-                </form>
-            </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
         </div>
     </div>
 
