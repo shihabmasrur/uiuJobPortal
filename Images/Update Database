@@ -1,0 +1,8 @@
+USE job_portal;
+
+-- Add new columns to jobs table
+ALTER TABLE jobs
+ADD COLUMN salary_type ENUM('project', 'monthly') NOT NULL AFTER description,
+ADD COLUMN salary DECIMAL(10,2) NOT NULL AFTER salary_type,
+ADD COLUMN work_location ENUM('onsite', 'remote') NOT NULL AFTER salary,
+ADD COLUMN job_type ENUM('job', 'internship') NOT NULL AFTER work_location; 
