@@ -14,14 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = sanitizeInput($_POST['title']);
     $category = sanitizeInput($_POST['category']);
     $description = sanitizeInput($_POST['description']);
+    $salary_type = sanitizeInput($_POST['salary_type']);
+    $salary = sanitizeInput($_POST['salary']);
+    $work_location = sanitizeInput($_POST['work_location']);
+    $job_type = sanitizeInput($_POST['job_type']);
     $employer_id = $_SESSION['user_id'];
     
-    if (empty($title) || empty($category) || empty($description)) {
+    if (empty($title) || empty($category) || empty($description) || empty($salary_type) || empty($salary) || empty($work_location) || empty($job_type)) {
         $error = "Please fill in all fields";
     } else {
-        $sql = "INSERT INTO jobs (title, category, description, employer_id) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO jobs (title, category, description, employer_id, salary_type, salary, work_location, job_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $title, $category, $description, $employer_id);
+        $stmt->bind_param("sssisdss", $title, $category, $description, $employer_id, $salary_type, $salary, $work_location, $job_type);
         
         if ($stmt->execute()) {
             $success = "Job posted successfully!";
@@ -105,6 +109,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option value="tuition">Tuition</option>
                             <option value="creative">Creative</option>
                             <option value="tech">Tech</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="salary_type">Salary Type</label>
+                        <select 
+                            id="salary_type" 
+                            name="salary_type" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none bg-white"
+                        >
+                            <option value="">Select salary type</option>
+                            <option value="project">Project Based</option>
+                            <option value="monthly">Monthly Salary</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="salary">Salary Amount</label>
+                        <input 
+                            type="number" 
+                            id="salary" 
+                            name="salary" 
+                            required
+                            min="0"
+                            step="0.01"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                            placeholder="Enter salary amount"
+                        >
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="work_location">Work Location</label>
+                        <select 
+                            id="work_location" 
+                            name="work_location" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none bg-white"
+                        >
+                            <option value="">Select work location</option>
+                            <option value="onsite">On Site</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="job_type">Job Type</label>
+                        <select 
+                            id="job_type" 
+                            name="job_type" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none bg-white"
+                        >
+                            <option value="">Select job type</option>
+                            <option value="job">Job</option>
+                            <option value="internship">Internship</option>
                         </select>
                     </div>
 
