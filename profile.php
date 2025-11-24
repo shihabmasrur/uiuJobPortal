@@ -78,6 +78,9 @@ if ($user['user_type'] == 'student') {
                 <li><a href="index.php" class="text-gray-600 hover:text-gray-900">Home</a></li>
                 <li><a href="profile.php" class="text-gray-900 font-medium">Profile</a></li>
                 <li><a href="messages.php" class="text-gray-600 hover:text-gray-900">Messages</a></li>
+                <?php if ($_SESSION['user_type'] == 'student'): ?>
+                    <li><a href="my_interviews.php" class="text-gray-600 hover:text-gray-900">My Interviews</a></li>
+                <?php endif; ?>
                 <?php if ($_SESSION['user_type'] == 'employer'): ?>
                     <li><a href="post_job.php" class="text-gray-600 hover:text-gray-900">Post Job</a></li>
                 <?php endif; ?>
